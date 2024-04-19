@@ -11,6 +11,8 @@
     "dev": "npm run dev:web & npm run dev:mobile",
     "dev:web": "npm -w @app/next run dev",
     "dev:mobile": "npm -w @app/expo run dev",
+    "dev:docs": "npm -w @app/docs run dev",
+    "dev:all": "npm run dev:web & npm run dev:mobile & npm run dev:docs",
     "android": "npm -w @app/expo run android",
     "ios": "npm -w @app/expo run ios",
     "expo:web": "npm -w @app/expo run web",
