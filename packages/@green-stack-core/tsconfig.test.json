@@ -1,0 +1,15 @@
+{
+    "extends": "@app/core/tsconfig",
+    "compilerOptions": {
+        "types": ["bun-types"]
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        "../../features/**/*.ts",
+        "../../features/**/*.tsx",
+        "../../features/app-core/graphql-env.d.ts",
+        "global.d.ts"
+    ],
+    "exclude": ["node_modules"]
+}

@@ -1,0 +1,43 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "pipeline": {
+        "build": {
+            "dependsOn": ["@green-stack/core#build:schema"],
+            "outputs": [".next/**", "!.next/cache/**"],
+            "cache": true
+        },
+        "dev": {
+            "dependsOn": ["@green-stack/core#build:schema"],
+            "cache": false
+        },
+        "@app/next#dev": {
+            "dependsOn": ["@green-stack/core#build:schema"],
+            "cache": false
+        },
+        "@app/expo#dev": {
+            "dependsOn": ["@green-stack/core#build:schema"],
+            "cache": false
+        },
+        "android": {
+            "cache": false
+        },
+        "ios": {
+            "cache": false
+        },
+        "@app/expo#web": {
+            "dependsOn": ["@green-stack/core#build:schema"],
+            "cache": false
+        },
+        "@app-expo#add-dependencies": {
+            "cache": false
+        },
+        "@green-stack/core#build:schema": {
+            "outputs": ["**/schema.graphql", "**/schema.ts", "**/graphql-env.d.ts"],
+            "inputs": [],
+            "cache": true
+        },
+        "env:local": {
+            "cache": false
+        }
+    }
+}
