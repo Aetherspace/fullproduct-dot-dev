@@ -1,9 +1,18 @@
 'use client'
 import { use, useState, useEffect } from 'react'
 import { useQueryClient, useQuery, dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import { createQueryBridge } from './UniversalRouteScreen.helpers'
 import type { UniversalRouteProps, QueryFn } from './UniversalRouteScreen.helpers'
 import { useRouteParams } from './useRouteParams'
 import { isExpoWebLocal } from '../../../features/@app-core/appConfig'
+
+/* --- Default Query Bridge ------------------------------------------------------------------------ */
+
+const DEFAULT_BRIDGE = createQueryBridge({
+    routeDataFetcher: async (args) => (args as { params: Record<string, string | string[]> }),
+    routeParamsToQueryKey: () => ['default-bridge'],
+    routeParamsToQueryInput: (routeParams) => ({ params: routeParams }),
+})
 
 /* --- Helpers --------------------------------------------------------------------------------- */
 
@@ -28,7 +37,7 @@ export const UniversalRouteScreen = <
     RES extends Record<string, unknown> = Record<string, unknown>,
 >(props: UniversalRouteProps<ARGS, RES>) => {
     // Props
-    const { params: routeParams, searchParams, queryBridge, routeScreen: RouteScreen, ...screenProps } = props
+    const { params: routeParams, searchParams, queryBridge = DEFAULT_BRIDGE, routeScreen: RouteScreen, ...screenProps } = props
     const { routeParamsToQueryKey, routeParamsToQueryInput, routeDataFetcher } = queryBridge
     const fetcherDataToProps = queryBridge.fetcherDataToProps || ((data: Awaited<ReturnType<QueryFn<ARGS, RES>>>) => data)
 
@@ -61,7 +70,7 @@ export const UniversalRouteScreen = <
 
     const queryConfig = {
         queryKey,
-        queryFn: async () => await routeDataFetcher(queryInput),
+        queryFn: async () => await routeDataFetcher(queryInput as unknown as ARGS),
         initialData: queryBridge.initialData,
     }
     
@@ -104,7 +113,7 @@ export const UniversalRouteScreen = <
     // -- Server --
 
     const fetcherData = use(queryClient.fetchQuery(queryConfig)) as Awaited<ReturnType<QueryFn<ARGS, RES>>>
-    const routeDataProps = fetcherDataToProps(fetcherData) as Record<string, unknown>
+    const routeDataProps = fetcherDataToProps(fetcherData as any) as Record<string, unknown>
     const dehydratedState = dehydrate(queryClient)
     
     return (

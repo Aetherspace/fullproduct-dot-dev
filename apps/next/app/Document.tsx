@@ -19,7 +19,7 @@ const Document = (props: { children: React.ReactNode }) => {
     <html suppressHydrationWarning>
       <head>
         {/* - Title & Keywords - */}
-        <title>Universal App Router</title>
+        <title>FullProduct.dev ⚡️</title>
         {/* - Styling - */}
         <ServerStylesProvider>{children}</ServerStylesProvider>
         {/* - Other - */}

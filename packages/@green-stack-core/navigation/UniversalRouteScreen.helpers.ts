@@ -44,13 +44,19 @@ export type UniversalRouteProps<
     /** -i- Optional search params passed by the Next.js app router, in Expo we get these from `useRouteParams()` */
     searchParams?: Partial<ARGS>
     /** -i- Configuration for the query bridge */
-    queryBridge: QueryBridgeConfig<ARGS, RES, QueryFn<ARGS, RES>, FetcherArgs, FetcherToProps, ParamsToQueryKey, ParamsToQueryInput>
+    queryBridge?: QueryBridgeConfig<ARGS, RES, QueryFn<ARGS, RES>, FetcherArgs, FetcherToProps, ParamsToQueryKey, ParamsToQueryInput>
     /** -i- The screen to render for this route */
     routeScreen: React.ComponentType
 }
 
 export type HydratedRouteProps<
     QueryBridge extends {
+        fetcherDataToProps: (fetcherData: any) => any,
+        routeDataFetcher: (...args: any[]) => Promise<any>,
+        routeParamsToQueryKey: any,
+        routeParamsToQueryInput: any
+        initialData?: any
+    } = {
         fetcherDataToProps: (fetcherData: any) => any,
         routeDataFetcher: (...args: any[]) => Promise<any>,
         routeParamsToQueryKey: any,

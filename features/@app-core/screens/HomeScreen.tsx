@@ -1,48 +1,62 @@
 import React from 'react'
-import { View, Link, Image, P, H3 } from '../components/styled'
-import { healthCheckFetcher } from '../resolvers/healthCheck.query'
-import { HydratedRouteProps, createQueryBridge } from '@green-stack/core/navigation/UniversalRouteScreen.helpers'
-
-/* --- Data Fetching --------------------------------------------------------------------------- */
-
-export const queryBridge = createQueryBridge({
-  routeDataFetcher: healthCheckFetcher,
-  routeParamsToQueryKey: (routeParams) => ['healthCheck', routeParams.echo],
-  routeParamsToQueryInput: (routeParams) => ({ healthCheckArgs: { echo: routeParams.echo } }),
-  fetcherDataToProps: (fetcherData) => ({ serverHealth: fetcherData?.healthCheck }),
-})
+import { View, Link, Image, H1, H2, Text, P } from '../components/styled'
+import { HydratedRouteProps } from '@green-stack/core/navigation/UniversalRouteScreen.helpers'
+import GithubIcon from '../icons/GithubIcon'
 
 /* --- <HomeScreen/> --------------------------------------------------------------------------- */
 
-const HomeScreen = (props: HydratedRouteProps<typeof queryBridge>) => {
+const HomeScreen = (props: HydratedRouteProps) => {
   // Props
-  const { serverHealth } = props
+  const { params, searchParams } = props
 
   // -- Render --
 
   return (
-    <View className="flex flex-1 justify-center items-center px-2">
-      <Image src={require('../assets/green-stack-logo.png')} width={60} height={60} className="mb-3" />
-      <H3 className="text-center max-w-[240px]">Full-Product, Universal App with the GREEN-stack 🚀</H3>
-      <P className="mt-2 text-center text-sm px-6 md:px-0">Open HomeScreen.tsx in features/@app-core/screens to start working on your app</P>
-      <Link href="/subpages/GREEN%20stack" className="mt-4 text-center text-base">
-        Test navigation
-      </Link>
-      <Link href="/images" className="mt-4 text-center text-base">
-        Test images
-      </Link>
-      {serverHealth?.graphURL ? (
-        <Link href={serverHealth.graphURL} target="_blank" className="mt-4 text-center text-base">
-          Test GraphQL
+    <View className="flex flex-1 justify-center items-center px-2 bg-gray-800">
+      <View className="max-w-[400px]">
+        <Link href="https://github.com/Aetherspace" target="_blank">
+          <Image src={require('../assets/green-stack-logo.png')} width={90} height={90} className="mb-3" />
         </Link>
-      ) : (
-        <P className="mt-4 text-center text-base">
-          {'Loading server health...'}
+        <H1>FullProduct.dev 🚀</H1>
+        <View className="h-2" />
+        <H2 className="md:px-0 text-primary-400">Universal App Starterkit</H2>
+        <View className="h-2" />
+        <P className="flex text-gray-400 flex-row">
+          <Text>By </Text><Text className="font-bold">Thorr ⚡️ </Text>
+          <Link className="font-bold" href="https://codinsonn.dev" target="_blank">
+            codinsonn.dev
+          </Link>
         </P>
-      )}
-      <Link href="https://universal-base-starter-docs.vercel.app/" target="_blank" className="mt-4 text-center text-base">
-        Docs
-      </Link>
+        <View className="h-12" />
+        <View className="flex-col md:flex-row">
+          <Link
+            className="w-full md:w-auto bg-slate-500 px-3 py-3 md:py-1 justify-center items-center md:justify-start rounded-md no-underline"
+            href="https://github.com/Aetherspace/universal-app-router"
+            target="_blank" 
+          >
+            <View className="flex-row w-full justify-center md:justify-start items-center">
+              <GithubIcon size={18} fill="#fff" />
+              <View className="w-2" />
+              <Text className="text-xl md:text-lg text-gray-100">
+                <Text className="font-bold">Star</Text> on GitHub
+              </Text>
+            </View>
+          </Link>
+          <View className="relative md:w-3 w-0 h-3 md:h-0" />
+          <Link
+            className="w-full md:w-auto bg-slate-500 px-3 py-3 md:py-1 justify-center items-center md:justify-start rounded-md no-underline"
+            href="https://universal-base-starter-docs.vercel.app/"
+            target="_blank" 
+          >
+            <Text className="w-full text-center text-xl md:text-lg text-gray-100">
+              Preview <Text className="font-bold">Docs</Text>
+            </Text>
+          </Link>
+        </View>
+        <P className="mt-4 text-gray-400 italic">
+          Coming to ProductHunt soon
+        </P>
+      </View>
     </View>
   )
 }

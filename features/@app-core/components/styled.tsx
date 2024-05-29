@@ -11,9 +11,9 @@ export const Image = styled(UniversalImage, '')
 
 /* --- Typography ------------------------------------------------------------------------------ */
 
-export const H1 = styled(RNText, 'font-bold text-2xl text-primary-500')
-export const H2 = styled(RNText, 'font-bold text-xl text-primary-500')
-export const H3 = styled(RNText, 'font-bold text-lg text-primary-500')
+export const H1 = styled(RNText, 'font-bold text-4xl text-white')
+export const H2 = styled(RNText, 'font-bold text-3xl text-gray-300')
+export const H3 = styled(RNText, 'font-bold text-lg text-gray-300')
 
 export const P = styled(RNText, 'text-base')
 

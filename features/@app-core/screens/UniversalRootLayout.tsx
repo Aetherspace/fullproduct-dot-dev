@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View } from '../components/styled'
 
 // -i- This is a regular react client component
 // -i- Use this file for applying your universal root layout
@@ -16,18 +16,10 @@ type UniversalRootLayoutProps = {
 /* --- <UniversalRootLayout/> ------------------------------------------------------------------ */
 
 const UniversalRootLayout = ({ children }: UniversalRootLayoutProps) => (
-    <View style={styles.container}>
+    <View className="flex flex-1">
         {children}
     </View>
 )
-
-/* --- Styles ---------------------------------------------------------------------------------- */
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-})
 
 /* --- Exports --------------------------------------------------------------------------------- */
   
