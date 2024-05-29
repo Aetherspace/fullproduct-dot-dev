@@ -1,14 +1,8 @@
-# Universal Expo + Next.js App Router Starter
+# FullProduct.dev ⚡️ Universal Startkit Website
 
-A minimal starter for a universal Expo + Next.js app with their respective app routers.
+This repo builds the website for the [FullProduct.dev](https://fullproduct.dev) project.
 
-It's a good starting point if you want to:
-
-- ✅ make use of app-dir file based routing in expo and next.js
-- ✅ have a minimal monorepo setup with Typescript but no monorepo tool yet
-- ✅ leave all other tech choices for e.g. styling, dbs, component libs, etc. up to you
-
-> This template repo is the result of a frequent exercise where I attempt to recreate [Aetherspace](https://github.com/Aetherspace/green-stack-starter) from scratch. I usually do this using the latest recommended expo + next.js starter from the Expo docs. This helps me see whether the setup and config for aetherspace can be simplified. Also handy to notice where issues occur and how to fix them.
+It's a Full-Stack starter for a universal Expo + Next.js app with their respective app routers.
 
 ## Getting Started
 
@@ -28,13 +22,17 @@ Install and/or open the [Expo Go](https://expo.io/client) app on your phone and 
 
 All docs for this basic Universal Starter can be found at [universal-base-starter-docs.vercel.app](https://universal-base-starter-docs.vercel.app/)
 
-## Alternative Universal App starters
+## Recommended reading
 
 See [How to choose cross-platform tech](https://dev.to/codinsonn/why-use-react-native-over-flutter-a-recap-57b0) on dev.to for our more detailed list of alternatives.
 
-**Our main recommendation for a more opinionated, more automated and extensible Universal Expo + Next.js starter to [move fast and build things](https://dev.to/codinsonn/how-to-compete-with-elons-twitter-a-dev-perspective-4j64) will always be Aetherspace 👇**
+**[move fast and build things](https://dev.to/codinsonn/how-to-compete-with-elons-twitter-a-dev-perspective-4j64) will always be Aetherspace 👇**
 
-## Main Aetherspace Universal App starter
+## Releasing soon - Beta & preview testing
+
+This project is still in active development and will be released on ProductHunt somewhere this summer.
+
+### Previously known as the Aetherspace Universal App starter
 
 - [Aetherspace GREEN stack starter](https://github.com/Aetherspace/green-stack-starter-demo)
 
